@@ -39,9 +39,9 @@
 ;; fallback to http there
 (if (eq system-type 'windows-nt)
     (add-to-list 'package-archives
-                 '("melpa" . "http://melpa.org/packages/") t)
+                 '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
   (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t))
+               '("melpa" . "https://elpa.emacs-china.org/melpa/") t))
 
 ;; load the pinned packages
 (let ((prelude-pinned-packages-file (expand-file-name "prelude-pinned-packages.el" prelude-dir)))
