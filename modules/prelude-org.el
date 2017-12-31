@@ -53,6 +53,11 @@
 
 (add-hook 'org-mode-hook (lambda () (run-hooks 'prelude-org-mode-hook)))
 
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote("crypt")))
+(setq org-crypt-key "lotreal@gmail.com")
+
 (provide 'prelude-org)
 
 ;;; prelude-org.el ends here
