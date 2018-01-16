@@ -14,3 +14,5 @@
 (global-set-key (kbd "M-2") 'split-window-vertically)
 (global-set-key (kbd "M-3") 'split-window-horizontally)
 (global-set-key (kbd "M-0") 'delete-window)
+
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
