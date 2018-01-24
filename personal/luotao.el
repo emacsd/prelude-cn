@@ -16,3 +16,11 @@
 (global-set-key (kbd "M-0") 'delete-window)
 
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(setq remote-file-name-inhibit-cache nil)
+(setq vc-ignore-dir-regexp
+      (format "%s\\|%s"
+              vc-ignore-dir-regexp
+              tramp-file-name-regexp))
+(setq tramp-verbose 6)
+(setq projectile-mode-line "Projectile")
