@@ -8,6 +8,11 @@
 (global-set-key "\C-u" 'er/expand-region)
 
 (global-set-key "\C-xk" 'kill-this-buffer)
+(global-set-key "\C-cc" 'org-capture)
+
+(org-defkey org-mode-map "\C-c\C-j" 'org-open-at-point)
+
+(global-set-key "\C-xk" 'kill-this-buffer)
 (global-set-key [(meta g)] 'goto-line)
 
 (global-set-key (kbd "M-1") 'delete-other-windows)
@@ -24,3 +29,5 @@
               tramp-file-name-regexp))
 (setq tramp-verbose 6)
 (setq projectile-mode-line "Projectile")
+
+(setq org-agenda-files (list "~/Documents/org/TODO.org"))
