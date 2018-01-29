@@ -1,8 +1,10 @@
-(setq org-default-notes-file (concat org-directory "~/notes.org"))
+(setq org-directory "~/Documents/org/")
+
+(setq org-default-notes-file (concat org-directory "TODO.org"))
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Documents/org/TODO.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")
+      '(("t" "Todo" entry (file+headline "" "TASKS")
+         "* TODO %?\n  %i\n  %a\n")
         ))
 
 (defun air-org-skip-subtree-if-habit ()
