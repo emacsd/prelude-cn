@@ -31,3 +31,11 @@
 (setq projectile-mode-line "Projectile")
 
 (setq org-agenda-files (list "~/Documents/org/TODO.org"))
+
+(defvar prelude-personal-private-dir (expand-file-name "private" prelude-personal-dir)
+  "This directory is for your private configuration.")
+
+;; load the personal settings (this includes `custom-file')
+(when (file-exists-p prelude-personal-private-dir)
+  (message "Loading private configuration files in %s..." prelude-personal-private-dir)
+  (mapc 'load (directory-files prelude-personal-private-dir 't "^[^#\.].*el$")))
