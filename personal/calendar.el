@@ -1,3 +1,6 @@
+(prelude-require-packages '(cal-china-x))
+(require 'cal-china-x)
+
 (setq calendar-holidays
       '((holiday-chinese-new-year)
         (holiday-fixed 1 1 "元旦节")

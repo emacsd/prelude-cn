@@ -1,8 +1,6 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 
-(prelude-require-packages '(cal-china-x))
-
 (load-theme 'manoj-dark t)
 ;; (ispell-change-dictionary "american" t)
 
