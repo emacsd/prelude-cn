@@ -23,8 +23,8 @@ tramp
 .emacs.desktop
 .emacs.desktop.lock
 network-security.data
-personal/private/*
-!personal/private/.gitkeep
+personal/private.el
+
 
 
 
