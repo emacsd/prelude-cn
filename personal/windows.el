@@ -1,5 +1,6 @@
 ;; Set Windows-specific preferences if running in a Windows environment.
 (defun udf-windows-setup () (interactive)
+       (prefer-coding-system 'utf-8)
        (setq git-shell-path "C:\\Program Files\\Git\\bin")
        (setq explicit-shell-file-name (concat git-shell-path "\\bash.exe"))
        (setq shell-file-name explicit-shell-file-name)
