@@ -2,10 +2,11 @@
 (defun udf-windows-setup () (interactive)
        (setq git-shell-path "C:\\Program Files\\Git\\bin")
        (setq explicit-shell-file-name (concat git-shell-path "\\bash.exe"))
+       (setq shell-file-name explicit-shell-file-name)
+       (setq explicit-sh.exe-args '("--login" "-i"))
+       (setenv "SHELL" shell-file-name)
+       (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
        (add-to-list 'exec-path git-shell-path)
-       (setenv "PATH"
-               (concat git-shell-path ";"
-                       (getenv "PATH")))
        (message "Windows preferences set."))
 
 (if (eq system-type 'windows-nt)
