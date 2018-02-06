@@ -28,6 +28,11 @@
 (setq tramp-verbose 6)
 (setq projectile-mode-line "Projectile")
 
+(defvar my-windows-config-dir (expand-file-name  "windows" prelude-personal-dir)
+  "This directory houses all of the config for Windows.")
+(if (eq system-type 'windows-nt)
+    (mapc 'load (directory-files my-windows-config-dir 't "^[^#\.].*el$")))
+
 (defvar my-private-config (expand-file-name "private.el" prelude-personal-dir)
   "This file is for your private configuration.")
 (when (file-exists-p my-private-config)
