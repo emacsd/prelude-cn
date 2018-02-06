@@ -28,8 +28,6 @@
 (setq tramp-verbose 6)
 (setq projectile-mode-line "Projectile")
 
-(setq mark-holidays-in-calendar t)
-
 (defvar my-private-config (expand-file-name "private.el" prelude-personal-dir)
   "This file is for your private configuration.")
 (when (file-exists-p my-private-config)

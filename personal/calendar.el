@@ -31,3 +31,5 @@
                                   (float 60))
                                calendar-daylight-time-zone-name))))
       )
+
+(setq mark-holidays-in-calendar t)
