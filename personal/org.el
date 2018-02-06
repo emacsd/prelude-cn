@@ -1,6 +1,19 @@
+(require 'org)
+(eval-after-load 'org
+  '(progn
+     (org-defkey org-mode-map "\C-c\C-j" 'org-open-at-point)
+     
+     (require 'org-crypt)
+     (org-crypt-use-before-save-magic)
+     (setq org-tags-exclude-from-inheritance (quote("crypt")))
+     (setq org-crypt-key "lotreal@gmail.com")
+     )
+  )
+
 (setq org-directory "~/Documents/org/")
 
 (setq org-default-notes-file (concat org-directory "TODO.org"))
+(setq org-agenda-files (list (concat org-directory "TODO.org")))
 
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "" "TASKS")

@@ -10,8 +10,6 @@
 (global-set-key "\C-xk" 'kill-this-buffer)
 (global-set-key "\C-cc" 'org-capture)
 
-(org-defkey org-mode-map "\C-c\C-j" 'org-open-at-point)
-
 (global-set-key "\C-xk" 'kill-this-buffer)
 (global-set-key [(meta g)] 'goto-line)
 
@@ -30,12 +28,9 @@
 (setq tramp-verbose 6)
 (setq projectile-mode-line "Projectile")
 
-(setq org-agenda-files (list "~/Documents/org/TODO.org"))
 
 (defvar prelude-personal-private-dir (expand-file-name "private" prelude-personal-dir)
   "This directory is for your private configuration.")
-
-;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-private-dir)
   (message "Loading private configuration files in %s..." prelude-personal-private-dir)
   (mapc 'load (directory-files prelude-personal-private-dir 't "^[^#\.].*el$")))
