@@ -32,8 +32,8 @@
 
 (setq mark-holidays-in-calendar t)
 
-(defvar prelude-personal-private-dir (expand-file-name "private" prelude-personal-dir)
-  "This directory is for your private configuration.")
-(when (file-exists-p prelude-personal-private-dir)
-  (message "Loading private configuration files in %s..." prelude-personal-private-dir)
-  (mapc 'load (directory-files prelude-personal-private-dir 't "^[^#\.].*el$")))
+(defvar my-private-config (expand-file-name "private.el" prelude-personal-dir)
+  "This file is for your private configuration.")
+(when (file-exists-p my-private-config)
+  (message "Loading private configuration in %s..." my-private-config)
+  (load my-private-config))
