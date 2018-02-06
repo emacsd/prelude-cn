@@ -55,9 +55,3 @@
       '("xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"))
-
-(setq org-file-apps
-      '((auto-mode . emacs)
-        ("\\.mm\\'" . default)
-        ("\\.x?html?\\'" . default)
-        ("\\.pdf\\'" . system)))

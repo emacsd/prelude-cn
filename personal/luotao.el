@@ -1,6 +1,8 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 
+(prelude-require-packages '(cal-china-x))
+
 (load-theme 'manoj-dark t)
 ;; (ispell-change-dictionary "american" t)
 
@@ -28,6 +30,7 @@
 (setq tramp-verbose 6)
 (setq projectile-mode-line "Projectile")
 
+(setq mark-holidays-in-calendar t)
 
 (defvar prelude-personal-private-dir (expand-file-name "private" prelude-personal-dir)
   "This directory is for your private configuration.")

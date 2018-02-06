@@ -1,8 +1,9 @@
 (require 'org)
+
 (eval-after-load 'org
   '(progn
      (org-defkey org-mode-map "\C-c\C-j" 'org-open-at-point)
-     
+
      (require 'org-crypt)
      (org-crypt-use-before-save-magic)
      (setq org-tags-exclude-from-inheritance (quote("crypt")))
@@ -15,9 +16,16 @@
 (setq org-default-notes-file (concat org-directory "TODO.org"))
 (setq org-agenda-files (list (concat org-directory "TODO.org")))
 
+(setq org-file-apps
+      '((auto-mode . emacs)
+        (directory . emacs)
+        ("\\.mm\\'" . default)
+        ("\\.x?html?\\'" . default)
+        ("\\.pdf\\'" . system)))
+
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "" "TASKS")
-         "* TODO %?\n  %i\n  %a\n")
+         "* TODO %?\n  %i\n  %a")
         ))
 
 (defun air-org-skip-subtree-if-habit ()
