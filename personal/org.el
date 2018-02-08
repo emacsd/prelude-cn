@@ -58,3 +58,11 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
                                                    (org-agenda-skip-if nil '(scheduled deadline))))
                     (org-agenda-overriding-header "ALL normal priority tasks:"))))
          ((org-agenda-compact-blocks t)))))
+
+(defvar org-build-directory (expand-file-name  "build" org-directory))
+(defadvice org-export-output-file-name (before org-add-export-dir activate)
+  "Modifies org-export to place exported files in a different directory"
+  (when (not pub-dir)
+    (setq pub-dir (expand-file-name (substring extension 1) org-build-directory))
+    (when (not (file-directory-p pub-dir))
+      (make-directory pub-dir t))))
