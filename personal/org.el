@@ -51,9 +51,12 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
          ((tags "PRIORITY=\"A\""
                 ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
                  (org-agenda-overriding-header "High-priority unfinished tasks:")))
-          (agenda "" ((org-agenda-ndays 1)))
+          (alltodo ""
+                   ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo '("TODO" "MAYBE")))
+                    (org-agenda-overriding-header "Verify tasks:")))
           (alltodo ""
                    ((org-agenda-skip-function '(or (air-org-skip-subtree-if-habit)
+                                                   (org-agenda-skip-entry-if 'todo '("MAYBE" "VERIFY"))
                                                    (air-org-skip-subtree-if-priority ?A)
                                                    (org-agenda-skip-if nil '(scheduled deadline))))
                     (org-agenda-overriding-header "ALL normal priority tasks:"))))
@@ -66,3 +69,11 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
     (setq pub-dir (expand-file-name (substring extension 1) org-build-directory))
     (when (not (file-directory-p pub-dir))
       (make-directory pub-dir t))))
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "MAYBE(m)" "VERIFY(v)" "|" "DONE(d)" "DELEGATED")
+        ))
+
+(setq org-log-done 'time)
+(setq org-log-into-drawer t)
+(setq org-log-state-notes-insert-after-drawers nil)

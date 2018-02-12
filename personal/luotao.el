@@ -2,6 +2,7 @@
 (menu-bar-mode 0)
 
 (load-theme 'manoj-dark t)
+(setq default-directory "~" )
 ;; (ispell-change-dictionary "american" t)
 
 (global-set-key "\C-z" 'set-mark-command)
