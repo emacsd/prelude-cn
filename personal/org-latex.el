@@ -14,6 +14,8 @@
 \\usepackage{zhspacing}
 \\zhspacing
 
+\\usepackage{minted}
+
 \\usepackage{hyperref}
 \\hypersetup{
  colorlinks=true,
@@ -48,10 +50,15 @@
         ("" "capt-of" nil)
         ))
 
+;; minted required:
+;; 1. xelatex -shell-escape
+;; 2. pip install Pygments
+(setq org-latex-listings 'minted)
+
 (setq org-latex-logfiles-extensions
       '("aux" "idx" "log" "out" "toc" "nav" "snm" "vrb"))
 
 (setq org-latex-pdf-process
-      '("xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"
-        "xelatex -interaction nonstopmode -output-directory %o %f"))
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))

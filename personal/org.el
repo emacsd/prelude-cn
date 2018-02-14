@@ -1,3 +1,6 @@
+;; Code block syntax highlighting in Org-mode's HTML export depends on the htmlize library
+(prelude-require-packages '(htmlize))
+
 (require 'org)
 
 (eval-after-load 'org

@@ -6,7 +6,6 @@
 ;; (ispell-change-dictionary "american" t)
 
 (global-set-key "\C-z" 'set-mark-command)
-(global-set-key "\C-u" 'er/expand-region)
 
 (global-set-key "\C-xk" 'kill-this-buffer)
 (global-set-key "\C-cc" 'org-capture)
