@@ -25,3 +25,4 @@ tramp
 .emacs.desktop.lock
 network-security.data
 personal/private.el
+.org-id-locations

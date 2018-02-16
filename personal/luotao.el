@@ -5,6 +5,10 @@
 (setq default-directory "~" )
 ;; (ispell-change-dictionary "american" t)
 
+;; Code block syntax highlighting in Org-mode's HTML export depends on the htmlize library
+(prelude-require-packages '(htmlize))
+
+
 (global-set-key "\C-z" 'set-mark-command)
 
 (global-set-key "\C-xk" 'kill-this-buffer)

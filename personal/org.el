@@ -1,6 +1,3 @@
-;; Code block syntax highlighting in Org-mode's HTML export depends on the htmlize library
-(prelude-require-packages '(htmlize))
-
 (require 'org)
 
 (eval-after-load 'org
@@ -26,6 +23,13 @@
         ("\\.x?html?\\'" . default)
         ("\\.pdf\\'" . system)))
 
+(setq org-babel-load-languages
+      '(
+        (dot . t)
+        (ditaa . t)
+        (plantuml . t)
+        ))
+
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "" "TASKS")
          "* TODO %?\n  %i\n  %a")
@@ -50,20 +54,39 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
       nil)))
 
 (setq org-agenda-custom-commands
-      '(("d" "Daily agenda and all TODOs"
-         ((tags "PRIORITY=\"A\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
-          (alltodo ""
-                   ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo '("TODO" "MAYBE")))
-                    (org-agenda-overriding-header "Verify tasks:")))
-          (alltodo ""
-                   ((org-agenda-skip-function '(or (air-org-skip-subtree-if-habit)
-                                                   (org-agenda-skip-entry-if 'todo '("MAYBE" "VERIFY"))
-                                                   (air-org-skip-subtree-if-priority ?A)
-                                                   (org-agenda-skip-if nil '(scheduled deadline))))
-                    (org-agenda-overriding-header "ALL normal priority tasks:"))))
-         ((org-agenda-compact-blocks t)))))
+      '(
+        ("d" "Daily agenda and all TODOs"
+         (
+          (todo "RUNNING"
+                ((org-agenda-overriding-header "正在处理的事情：")))
+          (todo "BLOCKED"
+                ((org-agenda-overriding-header "被阻塞的事情：")))
+          (todo "TODO"
+                ((org-agenda-overriding-header "任务列表:")
+                 (org-agenda-sorting-strategy '(priority-down category-keep))))
+          (todo "DELEGATED"
+                ((org-agenda-overriding-header "托付他人的事情："))))
+         ((org-agenda-compact-blocks t)))
+
+        ("w" "Weekly review"
+         agenda ""
+         ((org-agenda-span 'week)
+          (org-agenda-start-on-weekday 0)
+          (org-agenda-start-with-log-mode t)
+          (org-agenda-skip-function
+           '(org-agenda-skip-entry-if 'nottodo 'done))
+          ))
+
+        ("m" "Monthly review"
+         agenda ""
+         ((org-agenda-span 'month)
+          (org-agenda-start-day "-30d")
+          (org-agenda-start-with-log-mode t)
+          (org-agenda-skip-function
+           '(org-agenda-skip-entry-if 'nottodo 'done))
+          ))
+        )
+      )
 
 (defvar org-build-directory (expand-file-name  "build" org-directory))
 (defadvice org-export-output-file-name (before org-add-export-dir activate)
@@ -73,9 +96,9 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
     (when (not (file-directory-p pub-dir))
       (make-directory pub-dir t))))
 
+;; https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "MAYBE(m)" "VERIFY(v)" "|" "DONE(d)" "DELEGATED")
-        ))
+      '((sequence "TODO(t)" "RUNNING(r)" "BLOCKED(b)" "DELEGATED(p)" "|" "DONE(d)")))
 
 (setq org-log-done 'time)
 (setq org-log-into-drawer t)
