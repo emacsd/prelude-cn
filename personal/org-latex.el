@@ -1,30 +1,49 @@
 (setq org-latex-classes
       '(("article"
          "
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
 \\documentclass[12pt,a4paper]{article}
 \\XeTeXlinebreaklocale \"zh\"
 \\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
-\\usepackage[top=1in,bottom=1in,left=1.25in,right=1.25in]{geometry}
-\\usepackage{float}
+\\usepackage[top=1in,bottom=1in,left=0.8in,right=0.8in]{geometry}
+\\usepackage{xcolor}
+\\definecolor{link}{HTML}{0366D6}
+\\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+\\definecolor{mintcream}{rgb}{0.96, 1.0, 0.98}
+
 \\usepackage{fontspec}
 \\newfontfamily\\zhfont[BoldFont=PingFang SC]{PingFang SC}
 \\newfontfamily\\zhpunctfont{PingFang SC}
-\\setmainfont{Helvetica Neue}
-\\usepackage{indentfirst}
+\\setmainfont{Times New Roman}
+\\setsansfont{Helvetica/Arial}
+\\setmonofont{Courier New}
 \\usepackage{zhspacing}
 \\zhspacing
-
-\\usepackage{minted}
+\\usepackage{indentfirst}
 
 \\usepackage{hyperref}
 \\hypersetup{
- colorlinks=true,
-  linkcolor=[rgb]{0,0.37,0.53},
+  colorlinks=true,
+  linkcolor=link,
   citecolor=[rgb]{0,0.47,0.68},
-  filecolor=[rgb]{0,0.37,0.53},
-  urlcolor=[rgb]{0,0.37,0.53},
+  filecolor=link,
+  urlcolor=link,
   pagebackref=true,
-  linktoc=all,}
+  linktoc=all,
+}
+
+\\usepackage{minted}
+\\setminted{
+  frame=leftline,
+  bgcolor=mintcream,
+  fontsize=\\scriptsize,
+  tabsize=2,
+  breaklines,
+  framesep=2mm,
+  baselinestretch=1.2,
+}
 "
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -36,6 +55,7 @@
 (setq org-latex-default-packages-alist
       '(("AUTO" "inputenc" t
          ("pdflatex"))
+        ("" "float" t)
         ("" "color" t)
         ("" "multicol" t)
         ("" "graphicx" t)
