@@ -26,3 +26,6 @@ tramp
 network-security.data
 personal/private.el
 .org-id-locations
+prelude-cheatsheet.el
+prelude-cheatsheet.aux
+prelude-cheatsheet.log
